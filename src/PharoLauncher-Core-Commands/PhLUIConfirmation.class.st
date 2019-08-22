@@ -19,3 +19,8 @@ PhLUIConfirmation >> confirm [
 PhLUIConfirmation >> message: aString [ 
 	message := aString
 ]
+
+{ #category : #action }
+PhLUIConfirmation >> question [
+	^ UIManager default question: message
+]

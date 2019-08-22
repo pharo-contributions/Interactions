@@ -5,10 +5,10 @@ Class {
 	#name : #PhLUIRequest,
 	#superclass : #Object,
 	#instVars : [
-		'title',
 		'initialAnswer',
 		'validationBlock',
-		'entryCompletion'
+		'entryCompletion',
+		'message'
 	],
 	#category : #'PharoLauncher-Core-Commands'
 }
@@ -18,7 +18,7 @@ PhLUIRequest >> chooseFrom: aListOfChoices [
 	^ UIManager default 
 		chooseFrom: aListOfChoices
 		lines: #()
-		title: title
+		title: message
 ]
 
 { #category : #accessing }
@@ -32,9 +32,14 @@ PhLUIRequest >> initialAnswer: aString [
 ]
 
 { #category : #action }
+PhLUIRequest >> questionWithoutCancel [
+	^ UIManager default questionWithoutCancel: message
+]
+
+{ #category : #action }
 PhLUIRequest >> request [
 	| answer |
-	[ answer := UIManager default request: title initialAnswer: initialAnswer ]
+	[ answer := UIManager default request: message initialAnswer: initialAnswer ]
 		doWhileTrue: [ answer isNotNil and: [ (validationBlock value: answer) not ] ].
 		"answer is nil when the user press cancels. That's a possible answer we have to accept."
 	^ answer
@@ -42,18 +47,18 @@ PhLUIRequest >> request [
 
 { #category : #action }
 PhLUIRequest >> requestPassword [
-	^ UIManager default requestPassword: title
+	^ UIManager default requestPassword: message
 ]
 
 { #category : #action }
 PhLUIRequest >> requestWithEntryCompletion [
 	^ UIManager default 
-		request: title initialAnswer: initialAnswer entryCompletion: entryCompletion
+		request: message initialAnswer: initialAnswer entryCompletion: entryCompletion
 ]
 
 { #category : #accessing }
 PhLUIRequest >> title: aString [ 
-	title := aString
+	message := aString
 ]
 
 { #category : #accessing }

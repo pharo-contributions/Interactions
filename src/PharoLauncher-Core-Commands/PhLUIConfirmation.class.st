@@ -1,26 +1,29 @@
-"
-Abstraction of a yes/no dialog.
-"
 Class {
 	#name : #PhLUIConfirmation,
 	#superclass : #Object,
 	#instVars : [
-		'message'
+		'message',
+		'title'
 	],
 	#category : #'PharoLauncher-Core-Commands'
 }
 
 { #category : #action }
-PhLUIConfirmation >> confirm [
-	^ UIManager default confirm: message
-]
-
-{ #category : #accessing }
-PhLUIConfirmation >> message: aString [ 
-	message := aString
+PhLUIConfirmation >> proceed [
+	^ UIManager default proceed: message title: title
 ]
 
 { #category : #action }
 PhLUIConfirmation >> question [
-	^ UIManager default question: message
+	^ UIManager default question: message title: title
+]
+
+{ #category : #action }
+PhLUIConfirmation >> questionWithoutCancel [
+	^ UIManager default questionWithoutCancel: message title: title
+]
+
+{ #category : #accessing }
+PhLUIConfirmation >> title: aTitle [
+	title := aTitle
 ]

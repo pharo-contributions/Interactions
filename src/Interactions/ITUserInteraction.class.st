@@ -1,5 +1,5 @@
 Class {
-	#name : #PhLUserInteraction,
+	#name : #ITUserInteraction,
 	#superclass : #Object,
 	#instVars : [
 		'message',
@@ -7,5 +7,5 @@ Class {
 		'entryCompletion',
 		'title'
 	],
-	#category : #'PharoLauncher-Core-Commands'
+	#category : #Interactions
 }

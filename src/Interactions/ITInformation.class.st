@@ -1,20 +1,20 @@
 Class {
-	#name : #PhLUIInformation,
+	#name : #ITInformation,
 	#superclass : #Object,
 	#instVars : [
 		'message',
 		'aBlock'
 	],
-	#category : #'PharoLauncher-Core-Commands'
+	#category : #Interactions
 }
 
 { #category : #accessing }
-PhLUIInformation >> aBlock: block [
+ITInformation >> aBlock: block [
 	aBlock := block
 ]
 
 { #category : #action }
-PhLUIInformation >> informUserDuring [
+ITInformation >> informUserDuring [
 
 	^ UIManager default informUser: message during: aBlock
 ]

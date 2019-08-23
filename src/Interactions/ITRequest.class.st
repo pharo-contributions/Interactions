@@ -1,5 +1,5 @@
 Class {
-	#name : #PhLUIRequest,
+	#name : #ITRequest,
 	#superclass : #Object,
 	#instVars : [
 		'message',
@@ -8,16 +8,16 @@ Class {
 		'validationBlock',
 		'answerHeight'
 	],
-	#category : #'PharoLauncher-Core-Commands'
+	#category : #Interactions
 }
 
 { #category : #accessing }
-PhLUIRequest >> answerHeight: anInteger [
+ITRequest >> answerHeight: anInteger [
 	answerHeight := anInteger.
 ]
 
 { #category : #action }
-PhLUIRequest >> multiLineRequest [
+ITRequest >> multiLineRequest [
 	^ UIManager default multiLineRequest: message 
 		initialAnswer: initialAnswer
 		answerHeight: answerHeight

@@ -1,16 +1,16 @@
 Class {
-	#name : #PhLUIFileRequest,
+	#name : #ITFileRequest,
 	#superclass : #Object,
 	#instVars : [
 		'title',
 		'extensionsToShow',
 		'path'
 	],
-	#category : #'PharoLauncher-Core-Commands'
+	#category : #Interactions
 }
 
 { #category : #action }
-PhLUIFileRequest >> chooseFullFileName [
+ITFileRequest >> chooseFullFileName [
 	^ UIManager default
 		chooseFullFileName: title
 		extensions: extensionsToShow
@@ -19,16 +19,16 @@ PhLUIFileRequest >> chooseFullFileName [
 ]
 
 { #category : #accessing }
-PhLUIFileRequest >> extensionsToShow: anObject [
+ITFileRequest >> extensionsToShow: anObject [
 	extensionsToShow := anObject
 ]
 
 { #category : #accessing }
-PhLUIFileRequest >> path: anObject [
+ITFileRequest >> path: anObject [
 	path := anObject
 ]
 
 { #category : #accessing }
-PhLUIFileRequest >> title: anObject [
+ITFileRequest >> title: anObject [
 	title := anObject
 ]

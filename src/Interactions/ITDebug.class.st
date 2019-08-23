@@ -1,5 +1,5 @@
 Class {
-	#name : #PhLUIDebug,
+	#name : #ITDebug,
 	#superclass : #Object,
 	#instVars : [
 		'process',
@@ -8,23 +8,23 @@ Class {
 		'boolean',
 		'notifiactionString'
 	],
-	#category : #'PharoLauncher-Core-Commands'
+	#category : #Interactions
 }
 
 { #category : #initialization }
-PhLUIDebug >> initialize [
+ITDebug >> initialize [
 	super initialize.
 	boolean := false.
 	title := ''
 ]
 
 { #category : #accessing }
-PhLUIDebug >> notifiactionString:  anObject [
+ITDebug >> notifiactionString:  anObject [
 	notifiactionString := anObject
 ]
 
 { #category : #action }
-PhLUIDebug >> open [
+ITDebug >> open [
 	^ UIManager default
 		debugProcess: process
 		context: context

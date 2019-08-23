@@ -1,29 +1,29 @@
 Class {
-	#name : #PhLUIConfirmation,
+	#name : #ITConfirmation,
 	#superclass : #Object,
 	#instVars : [
 		'message',
 		'title'
 	],
-	#category : #'PharoLauncher-Core-Commands'
+	#category : #Interactions
 }
 
 { #category : #action }
-PhLUIConfirmation >> proceed [
+ITConfirmation >> proceed [
 	^ UIManager default proceed: message title: title
 ]
 
 { #category : #action }
-PhLUIConfirmation >> question [
+ITConfirmation >> question [
 	^ UIManager default question: message title: title
 ]
 
 { #category : #action }
-PhLUIConfirmation >> questionWithoutCancel [
+ITConfirmation >> questionWithoutCancel [
 	^ UIManager default questionWithoutCancel: message title: title
 ]
 
 { #category : #accessing }
-PhLUIConfirmation >> title: aTitle [
+ITConfirmation >> title: aTitle [
 	title := aTitle
 ]

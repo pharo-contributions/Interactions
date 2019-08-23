@@ -11,6 +11,16 @@ Class {
 	#category : #Interactions
 }
 
+{ #category : #accessing }
+ITDebug >> boolean: anObject [
+	boolean := anObject
+]
+
+{ #category : #accessing }
+ITDebug >> context: anObject [
+	context := anObject
+]
+
 { #category : #initialization }
 ITDebug >> initialize [
 	super initialize.
@@ -31,4 +41,14 @@ ITDebug >> open [
 		label: title
 		fullView: boolean
 		notification: notifiactionString
+]
+
+{ #category : #accessing }
+ITDebug >> process: anObject [
+	process := anObject
+]
+
+{ #category : #accessing }
+ITDebug >> title: anObject [
+	title := anObject
 ]

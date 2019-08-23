@@ -8,6 +8,11 @@ Class {
 	#category : #Interactions
 }
 
+{ #category : #accessing }
+ITConfirmation >> message: anObject [
+	message := anObject
+]
+
 { #category : #action }
 ITConfirmation >> proceed [
 	^ UIManager default proceed: message title: title

@@ -27,6 +27,11 @@ ITRequest >> chooseFrom: aListOfChoices [
 ]
 
 { #category : #accessing }
+ITRequest >> entryCompletion: anObject [
+	entryCompletion := anObject
+]
+
+{ #category : #accessing }
 ITRequest >> initialAnswer: anObject [
 	initialAnswer := anObject
 ]
@@ -43,7 +48,7 @@ ITRequest >> multiLineRequest [
 		answerHeight: answerHeight
 ]
 
-{ #category : #accessing }
+{ #category : #action }
 ITRequest >> request [
 	| answer |
 	[ answer := UIManager default
@@ -55,11 +60,30 @@ ITRequest >> request [
 ]
 
 { #category : #action }
+ITRequest >> requestPassword [
+	UIManager default requestPassword: message
+]
+
+{ #category : #action }
 ITRequest >> requestWithEntryCompletion [
+	self flag: #sameA.
 	^ UIManager default
 		request: message
 		initialAnswer: initialAnswer
 		entryCompletion: entryCompletion
+]
+
+{ #category : #action }
+ITRequest >> textEntryTitleEntryText [
+	self flag: #sameA.
+	UIManager default
+		request: message
+		initialAnswer: initialAnswer
+		title: title
+	"UIManager default
+		textEntry: message
+		title: title
+		entryText: initialAnswer"
 ]
 
 { #category : #accessing }

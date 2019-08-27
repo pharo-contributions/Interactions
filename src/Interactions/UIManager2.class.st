@@ -530,6 +530,7 @@ UIManager2 >> onPrimitiveError: aString [
 { #category : #'ui requests' }
 UIManager2 >> openComparisionFrom: targetMethodSource to: originalMethodSource belongingTo: aClass from: aChange [
 	self flag: #notImplementor.
+	self deprecated: 'store into ITCodeDiff'.
 	^self subclassResponsibility				
 ]
 

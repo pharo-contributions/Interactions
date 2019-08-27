@@ -21,7 +21,7 @@ ITError >> isLoging: anObject [
 	isLoging := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #running }
 ITError >> logError [
 	Smalltalk
 		logError: catchedError messageText

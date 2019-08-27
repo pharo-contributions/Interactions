@@ -3,14 +3,79 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'message',
-		'title'
+		'title',
+		'cancelLabel',
+		'cancelBlock',
+		'falseLabel',
+		'trueLabel',
+		'defaultChoice'
 	],
 	#category : #Interactions
 }
 
 { #category : #accessing }
+ITConfirmation >> cancelBlock: anObject [
+	cancelBlock := anObject
+]
+
+{ #category : #getteur }
+ITConfirmation >> cancelLabel [
+	^ cancelLabel ifNil: [ cancelLabel := 'cancel' ]
+]
+
+{ #category : #accessing }
+ITConfirmation >> cancelLabel: aStringUseAsLabelForButton [
+	cancelLabel := aStringUseAsLabelForButton
+]
+
+{ #category : #action }
+ITConfirmation >> confirm [
+	^ UIManager default
+		confirm: message
+		trueChoice: self trueLabel
+		falseChoice: self falseLabel
+		cancelChoice: self cancelLabel
+		default: self defaultChoice
+]
+
+{ #category : #action }
+ITConfirmation >> confirmWithCancelBlock [
+	^ UIManager default confirm: message orCancel: cancelBlock
+]
+
+{ #category : #getteur }
+ITConfirmation >> defaultBoolean [
+	^ defaultChoice ifNil: [ defaultChoice := nil ]
+]
+
+{ #category : #getteur }
+ITConfirmation >> defaultChoice [
+	^ defaultChoice ifNil: [ defaultChoice := nil ]
+]
+
+{ #category : #accessing }
+ITConfirmation >> defaultChoice: boolean [
+	"aSymbol have to be:
+		true
+		false
+		nil
+		"
+	defaultChoice := boolean
+]
+
+{ #category : #getteur }
+ITConfirmation >> falseLabel [
+	^ falseLabel ifNil: [ falseLabel := 'no' ]
+]
+
+{ #category : #accessing }
 ITConfirmation >> message: anObject [
 	message := anObject
+]
+
+{ #category : #accessing }
+ITConfirmation >> noLabel: aStringUseAsLabelForButton [
+	falseLabel := aStringUseAsLabelForButton
 ]
 
 { #category : #action }
@@ -31,4 +96,14 @@ ITConfirmation >> questionWithoutCancel [
 { #category : #accessing }
 ITConfirmation >> title: aTitle [
 	title := aTitle
+]
+
+{ #category : #getteur }
+ITConfirmation >> trueLabel [
+	^ trueLabel ifNil: [ trueLabel := 'yes' ]
+]
+
+{ #category : #accessing }
+ITConfirmation >> yesLabel: aStringUseAsLabelForButton [
+	trueLabel := aStringUseAsLabelForButton
 ]

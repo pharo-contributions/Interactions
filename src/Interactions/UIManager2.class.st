@@ -279,13 +279,13 @@ UIManager2 >> confirm: queryString [
 	"Put up a yes/no menu with caption queryString. Answer true if the 
 	response is yes, false if no. This is a modal question--the user must 
 	respond yes or no."
-	
+	self deprecated: 'use question instead'.
 	^self subclassResponsibility
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> confirm: queryString label: titleString [
-	
+	self deprecated: 'store into ' , ITConfirmation className.
 	^self subclassResponsibility
 ]
 
@@ -295,7 +295,7 @@ UIManager2 >> confirm: queryString label: title trueChoice: trueChoice falseChoi
 	defaultOption should be one of true, false or nil to set the default button.
 	Answer true if the response is the true-choice, false if it's the false-choice, nil if the cancelChoice.
 	This is a modal question -- the user must respond."
-	
+	self deprecated: 'store into ' , ITConfirmation className.
 	^self subclassResponsibility
 ]
 
@@ -304,7 +304,7 @@ UIManager2 >> confirm: aString orCancel: cancelBlock [
 	"Put up a yes/no/cancel menu with caption aString. Answer true if  
 	the response is yes, false if no. If cancel is chosen, evaluate  
 	cancelBlock. This is a modal question--the user must respond yes or no."
-	
+	self deprecated: 'store into ' , ITConfirmation className.
 	^self subclassResponsibility
 ]
 
@@ -312,7 +312,7 @@ UIManager2 >> confirm: aString orCancel: cancelBlock [
 UIManager2 >> confirm: queryString trueChoice: trueChoice falseChoice: falseChoice [ 
 	"Put up a yes/no menu with caption queryString. The actual wording for the two choices will be as provided in the trueChoice and falseChoice parameters. Answer true if the response is the true-choice, false if it's the false-choice.
 	This is a modal question -- the user must respond one way or the other."
-	
+	self deprecated: 'store into ' , ITConfirmation className.
 	^self subclassResponsibility
 ]
 
@@ -322,7 +322,7 @@ UIManager2 >> confirm: queryString trueChoice: trueChoice falseChoice: falseChoi
 	Default should be one of #yes, #no or #cancel to set the default button.
 	Answer true if the response is the true-choice, false if it's the false-choice, nil if the cancelChoice.
 	This is a modal question -- the user must respond."
-	
+	self deprecated: 'store into ' , ITConfirmation className.
 	^self subclassResponsibility
 ]
 

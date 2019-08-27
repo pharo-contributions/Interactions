@@ -212,28 +212,28 @@ UIManager2 >> chooseFrom: aList title: aString [
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: labelList values: valueList [
 	"Choose an item from the given list. Answer the selected item."
-	
+	self deprecated: 'store into ' , ITSelectItemInCollection className.
 	^self chooseFrom: labelList values: valueList lines: #()
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: labelList values: valueList lines: linesArray [
 	"Choose an item from the given list. Answer the selected item."
-	
+	self deprecated: 'store into ' , ITSelectItemInCollection className.
 	^self chooseFrom: labelList values: valueList lines: linesArray title: ''
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: aList values: valueList lines: linesArray message: messageString [
 	"Choose an item from the given list. Answer the index of the selected item."
-	
+	self deprecated: 'store into ' , ITSelectItemInCollection className.
 	^self chooseFrom: aList values: valueList lines: linesArray message: messageString title: ''
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: labelList values: valueList lines: linesArray message: messageString title: aString [
 	"Choose an item from the given list. Answer the selected item."
-	
+	self deprecated: 'store into ' , ITSelectItemInCollection className.
 	^self
 		chooseFrom: labelList
 		values: valueList 
@@ -246,28 +246,28 @@ UIManager2 >> chooseFrom: labelList values: valueList lines: linesArray message:
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: labelList values: valueList lines: linesArray title: aString [
 	"Choose an item from the given list. Answer the selected item."
-	
+	self deprecated: 'store into ' , ITSelectItemInCollection className.
 	^self subclassResponsibility
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: aList values: valueList message: messageString [
 	"Choose an item from the given list. Answer the index of the selected item."
-	
+	self deprecated: 'store into ' , ITSelectItemInCollection className.
 	^self chooseFrom: aList values: valueList lines: #() message: messageString
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: aList values: valueList message: messageString title: aString [
 	"Choose an item from the given list. Answer the index of the selected item."
-	
+	self deprecated: 'store into ' , ITSelectItemInCollection className.
 	^self chooseFrom: aList values: valueList lines: #() message: messageString title: aString
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: labelList values: valueList title: aString [
 	"Choose an item from the given list. Answer the selected item."
-	
+	self deprecated: 'store into ' , ITSelectItemInCollection className.
 	^self chooseFrom: labelList values: valueList lines: #() title: aString
 ]
 

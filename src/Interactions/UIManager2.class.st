@@ -332,7 +332,7 @@ UIManager2 >> deactivate [
 
 { #category : #debug }
 UIManager2 >> debugProcess: process context: context label: title fullView: bool [
-	self deprecated: ''.
+	self deprecated: 'use ITDebug instead'.
 	self debugProcess: process context: context label: title fullView: bool notification: nil
 ]
 
@@ -404,13 +404,13 @@ UIManager2 >> fontFromUser: priorFont [
 
 { #category : #'error handling' }
 UIManager2 >> handleError: anError [
-	
+	self deprecated: 'Store into ITError'.
 	self handleError: anError log: true
 ]
 
 { #category : #'error handling' }
 UIManager2 >> handleError: anError log: shouldLog [
-
+	self deprecated: 'Store into ITError'.
 	self subclassResponsibility
 ]
 
@@ -460,7 +460,7 @@ UIManager2 >> interruptName: labelString preemptedProcess: theInterruptedProcess
 
 { #category : #'error handling' }
 UIManager2 >> logError: anError [
-
+	self flag: #moveToITError.
 	Smalltalk
 		logError: anError messageText
 		inContext: anError signalerContext
@@ -524,11 +524,12 @@ UIManager2 >> onFontsChanged [
 
 { #category : #events }
 UIManager2 >> onPrimitiveError: aString [	
+	self deprecated: #storeIntoITPrimitiveError.
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> openComparisionFrom: targetMethodSource to: originalMethodSource belongingTo: aClass from: aChange [
-					 
+	self flag: #notImplementor.
 	^self subclassResponsibility				
 ]
 

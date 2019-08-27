@@ -66,7 +66,7 @@ ITRequest >> requestPassword [
 
 { #category : #action }
 ITRequest >> requestWithEntryCompletion [
-	self flag: #sameA.
+	self flag: #UIManagerSameA.
 	^ UIManager default
 		request: message
 		initialAnswer: initialAnswer
@@ -75,7 +75,7 @@ ITRequest >> requestWithEntryCompletion [
 
 { #category : #action }
 ITRequest >> textEntryTitleEntryText [
-	self flag: #sameA.
+	self flag: #UIManagerSameA.
 	UIManager default
 		request: message
 		initialAnswer: initialAnswer

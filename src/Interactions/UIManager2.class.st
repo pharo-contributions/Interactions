@@ -498,7 +498,7 @@ UIManager2 >> newDisplayDepthNoRestore: pixelSize [
 { #category : #'ui requests' }
 UIManager2 >> newMenuIn: aThemedMorph for: aModel [
 	"Answer a new menu."
-	
+	self deprecated: 'storeIntoITMenuInFor'.
 	^self subclassResponsibility
 ]
 

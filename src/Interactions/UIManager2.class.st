@@ -425,7 +425,7 @@ UIManager2 >> headlessManager [
 { #category : #'ui requests' }
 UIManager2 >> inform: aString [
 	"Display a message for the user to read and then dismiss."
-	
+	self deprecated: 'store into ' , ITInform className.
 	^self subclassResponsibility
 ]
 
@@ -435,7 +435,7 @@ UIManager2 >> informUser: aString during: aBlock [
 	 during execution of the given block.
 		UIManager default informUser: 'Just a sec!' during: [(Delay forSeconds: 1) wait].
 	"
-	
+	self deprecated: 'store into ' , ITInformUserDuringBlock className.
 	^self informUserDuring: [:bar | bar label: aString. aBlock value]
 ]
 
@@ -447,8 +447,9 @@ UIManager2 >> informUserDuring: aBlock [
 			#(one two three) do:[:info|
 				bar label: info.
 				(Delay forSeconds: 1) wait]]"
-		
-	^self subclassResponsibility
+
+	self deprecated: 'store into ' , ITInformUserDuringBlock className.
+	^ self subclassResponsibility
 ]
 
 { #category : #'ui process' }

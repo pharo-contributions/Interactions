@@ -32,3 +32,14 @@ ITError >> logError [
 ITError >> run [
 	UIManager default handleError: catchedError log: isLoging
 ]
+
+{ #category : #'as yet unclassified' }
+ITError >> syntaxErrorNotificationDefaultAction [
+	^ UIManager default
+		syntaxErrorNotificationDefaultAction: catchedError
+]
+
+{ #category : #running }
+ITError >> unhandledErrorDefaultAction [
+	^ UIManager default unhandledErrorDefaultAction: catchedError 
+]

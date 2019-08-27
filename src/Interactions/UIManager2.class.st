@@ -134,62 +134,79 @@ UIManager2 >> chooseDirectoryFrom: dir [
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: aList [
 	"Choose an item from the given list. Answer the index of the selected item."
-	
-	^self chooseFrom: aList lines: #()
+
+	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	^ self chooseFrom: aList lines: #()
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: aList lines: linesArray [
 	"Choose an item from the given list. Answer the index of the selected item."
-	
-	^self chooseFrom: aList lines: linesArray title: ''
+
+	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	^ self chooseFrom: aList lines: linesArray title: ''
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: aList lines: linesArray message: messageString [
 	"Choose an item from the given list. Answer the index of the selected item."
-	
-	^self chooseFrom: aList lines: linesArray message: messageString title: ''
+
+	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	^ self
+		chooseFrom: aList
+		lines: linesArray
+		message: messageString
+		title: ''
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: aList lines: linesArray message: messageString title: aString [
 	"Choose an item from the given list. Answer the selected item."
-	
-	^self
+
+	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	^ self
 		chooseFrom: aList
 		lines: linesArray
-		title: (aString 
+		title:
+			(aString
 				ifEmpty: [ messageString ]
-				ifNotEmpty: [ aString, String cr, messageString ])
+				ifNotEmpty: [ aString , String cr , messageString ])
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: aList lines: linesArray title: aString [
 	"Choose an item from the given list. Answer the index of the selected item."
-	
-	^self subclassResponsibility
+
+	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	^ self subclassResponsibility
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: aList message: messageString [
 	"Choose an item from the given list. Answer the index of the selected item."
-	
-	^self chooseFrom: aList lines: #() message: messageString
+
+	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	^ self chooseFrom: aList lines: #() message: messageString
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: aList message: messageString title: aString [
 	"Choose an item from the given list. Answer the index of the selected item."
-	
-	^self chooseFrom: aList lines: #() message: messageString title: aString
+
+	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	^ self
+		chooseFrom: aList
+		lines: #()
+		message: messageString
+		title: aString
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: aList title: aString [
 	"Choose an item from the given list. Answer the index of the selected item."
-	
-	^self chooseFrom: aList lines: #() title: aString
+
+	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	^ self chooseFrom: aList lines: #() title: aString
 ]
 
 { #category : #'ui requests' }
@@ -519,7 +536,7 @@ UIManager2 >> onEventSensorStartup: anEventSensor [
 
 { #category : #'default actions' }
 UIManager2 >> onFontsChanged [
-
+	1 halt.
 	
 ]
 
@@ -693,8 +710,8 @@ UIManager2 >> spawnNewProcessIfThisIsUI: suspendedProcess [
 
 { #category : #'default actions' }
 UIManager2 >> syntaxErrorNotificationDefaultAction: anException [
-
-	^ self subclassResponsibility 
+	self deprecated: 'store into ' , ITError className.
+	^ self subclassResponsibility
 ]
 
 { #category : #'ui process' }
@@ -733,13 +750,15 @@ UIManager2 >> unhandledErrorDefaultAction: anException [
 	 (but we can't put 'self subclassResponsibility' , because it will cause infinite loop,
 	 in case if current ui manager having no override of this method).
 	 This method is only for documentation purposes."
-		
-	Smalltalk snapshot: false andQuit: true.
+
+	self deprecated: 'store into ' , ITError className.
+	Smalltalk snapshot: false andQuit: true
 ]
 
 { #category : #'default actions' }
 UIManager2 >> warningDefaultAction: aWarning [
 	"Handle warning notification. Should be overidden by subclass."
-	
-	self subclassResponsibility  
+
+	self deprecated: 'store into ' , ITWarning className.
+	self subclassResponsibility
 ]

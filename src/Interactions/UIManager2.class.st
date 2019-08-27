@@ -461,7 +461,7 @@ UIManager2 >> interruptName: labelString preemptedProcess: theInterruptedProcess
 
 { #category : #'error handling' }
 UIManager2 >> logError: anError [
-	self flag: #moveToITError.
+	self deprecated: 'store into ' , ITError className.
 	Smalltalk
 		logError: anError messageText
 		inContext: anError signalerContext

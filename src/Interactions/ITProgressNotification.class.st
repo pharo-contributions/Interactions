@@ -1,5 +1,8 @@
+"
+I notify the user of the progress of the current action.
+"
 Class {
-	#name : #ITInformUserDuringBlock,
+	#name : #ITProgressNotification,
 	#superclass : #Object,
 	#instVars : [
 		'string',
@@ -9,21 +12,21 @@ Class {
 }
 
 { #category : #accessing }
-ITInformUserDuringBlock >> block: anObject [
+ITProgressNotification >> block: anObject [
 	block := anObject
 ]
 
 { #category : #action }
-ITInformUserDuringBlock >> informUserDuring [
+ITProgressNotification >> informUserDuring [
 	^ UIManager default informUser: string during: block
 ]
 
 { #category : #action }
-ITInformUserDuringBlock >> informUserDuringBlock [
+ITProgressNotification >> informUserDuringBlock [
 	^ UIManager default informUserDuring: block
 ]
 
 { #category : #accessing }
-ITInformUserDuringBlock >> string: anObject [
+ITProgressNotification >> string: anObject [
 	string := anObject
 ]

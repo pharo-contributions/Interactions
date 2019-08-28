@@ -135,7 +135,7 @@ UIManager2 >> chooseDirectoryFrom: dir [
 UIManager2 >> chooseFrom: aList [
 	"Choose an item from the given list. Answer the index of the selected item."
 
-	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	self deprecated: 'store into ' , ITUIChoice className.
 	^ self chooseFrom: aList lines: #()
 ]
 
@@ -143,7 +143,7 @@ UIManager2 >> chooseFrom: aList [
 UIManager2 >> chooseFrom: aList lines: linesArray [
 	"Choose an item from the given list. Answer the index of the selected item."
 
-	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	self deprecated: 'store into ' , ITUIChoice className.
 	^ self chooseFrom: aList lines: linesArray title: ''
 ]
 
@@ -151,7 +151,7 @@ UIManager2 >> chooseFrom: aList lines: linesArray [
 UIManager2 >> chooseFrom: aList lines: linesArray message: messageString [
 	"Choose an item from the given list. Answer the index of the selected item."
 
-	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	self deprecated: 'store into ' , ITUIChoice className.
 	^ self
 		chooseFrom: aList
 		lines: linesArray
@@ -163,7 +163,7 @@ UIManager2 >> chooseFrom: aList lines: linesArray message: messageString [
 UIManager2 >> chooseFrom: aList lines: linesArray message: messageString title: aString [
 	"Choose an item from the given list. Answer the selected item."
 
-	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	self deprecated: 'store into ' , ITUIChoice className.
 	^ self
 		chooseFrom: aList
 		lines: linesArray
@@ -177,7 +177,7 @@ UIManager2 >> chooseFrom: aList lines: linesArray message: messageString title: 
 UIManager2 >> chooseFrom: aList lines: linesArray title: aString [
 	"Choose an item from the given list. Answer the index of the selected item."
 
-	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	self deprecated: 'store into ' , ITUIChoice className.
 	^ self subclassResponsibility
 ]
 
@@ -185,7 +185,7 @@ UIManager2 >> chooseFrom: aList lines: linesArray title: aString [
 UIManager2 >> chooseFrom: aList message: messageString [
 	"Choose an item from the given list. Answer the index of the selected item."
 
-	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	self deprecated: 'store into ' , ITUIChoice className.
 	^ self chooseFrom: aList lines: #() message: messageString
 ]
 
@@ -193,7 +193,7 @@ UIManager2 >> chooseFrom: aList message: messageString [
 UIManager2 >> chooseFrom: aList message: messageString title: aString [
 	"Choose an item from the given list. Answer the index of the selected item."
 
-	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	self deprecated: 'store into ' , ITUIChoice className.
 	^ self
 		chooseFrom: aList
 		lines: #()
@@ -205,35 +205,35 @@ UIManager2 >> chooseFrom: aList message: messageString title: aString [
 UIManager2 >> chooseFrom: aList title: aString [
 	"Choose an item from the given list. Answer the index of the selected item."
 
-	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	self deprecated: 'store into ' , ITUIChoice className.
 	^ self chooseFrom: aList lines: #() title: aString
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: labelList values: valueList [
 	"Choose an item from the given list. Answer the selected item."
-	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	self deprecated: 'store into ' , ITUIChoice className.
 	^self chooseFrom: labelList values: valueList lines: #()
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: labelList values: valueList lines: linesArray [
 	"Choose an item from the given list. Answer the selected item."
-	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	self deprecated: 'store into ' , ITUIChoice className.
 	^self chooseFrom: labelList values: valueList lines: linesArray title: ''
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: aList values: valueList lines: linesArray message: messageString [
 	"Choose an item from the given list. Answer the index of the selected item."
-	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	self deprecated: 'store into ' , ITUIChoice className.
 	^self chooseFrom: aList values: valueList lines: linesArray message: messageString title: ''
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: labelList values: valueList lines: linesArray message: messageString title: aString [
 	"Choose an item from the given list. Answer the selected item."
-	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	self deprecated: 'store into ' , ITUIChoice className.
 	^self
 		chooseFrom: labelList
 		values: valueList 
@@ -246,28 +246,28 @@ UIManager2 >> chooseFrom: labelList values: valueList lines: linesArray message:
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: labelList values: valueList lines: linesArray title: aString [
 	"Choose an item from the given list. Answer the selected item."
-	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	self deprecated: 'store into ' , ITUIChoice className.
 	^self subclassResponsibility
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: aList values: valueList message: messageString [
 	"Choose an item from the given list. Answer the index of the selected item."
-	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	self deprecated: 'store into ' , ITUIChoice className.
 	^self chooseFrom: aList values: valueList lines: #() message: messageString
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: aList values: valueList message: messageString title: aString [
 	"Choose an item from the given list. Answer the index of the selected item."
-	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	self deprecated: 'store into ' , ITUIChoice className.
 	^self chooseFrom: aList values: valueList lines: #() message: messageString title: aString
 ]
 
 { #category : #'ui requests' }
 UIManager2 >> chooseFrom: labelList values: valueList title: aString [
 	"Choose an item from the given list. Answer the selected item."
-	self deprecated: 'store into ' , ITSelectItemInCollection className.
+	self deprecated: 'store into ' , ITUIChoice className.
 	^self chooseFrom: labelList values: valueList lines: #() title: aString
 ]
 
@@ -442,7 +442,7 @@ UIManager2 >> headlessManager [
 { #category : #'ui requests' }
 UIManager2 >> inform: aString [
 	"Display a message for the user to read and then dismiss."
-	self deprecated: 'store into ' , ITInform className.
+	self deprecated: 'store into ' , ITNotification className.
 	^self subclassResponsibility
 ]
 
@@ -452,7 +452,7 @@ UIManager2 >> informUser: aString during: aBlock [
 	 during execution of the given block.
 		UIManager default informUser: 'Just a sec!' during: [(Delay forSeconds: 1) wait].
 	"
-	self deprecated: 'store into ' , ITInformUserDuringBlock className.
+	self deprecated: 'store into ' , ITProgressNotification className.
 	^self informUserDuring: [:bar | bar label: aString. aBlock value]
 ]
 
@@ -465,7 +465,7 @@ UIManager2 >> informUserDuring: aBlock [
 				bar label: info.
 				(Delay forSeconds: 1) wait]]"
 
-	self deprecated: 'store into ' , ITInformUserDuringBlock className.
+	self deprecated: 'store into ' , ITProgressNotification className.
 	^ self subclassResponsibility
 ]
 
@@ -478,7 +478,7 @@ UIManager2 >> interruptName: labelString preemptedProcess: theInterruptedProcess
 
 { #category : #'error handling' }
 UIManager2 >> logError: anError [
-	self deprecated: 'store into ' , ITError className.
+
 	Smalltalk
 		logError: anError messageText
 		inContext: anError signalerContext
@@ -541,8 +541,7 @@ UIManager2 >> onFontsChanged [
 ]
 
 { #category : #events }
-UIManager2 >> onPrimitiveError: aString [	
-	self deprecated: #storeIntoITPrimitiveError.
+UIManager2 >> onPrimitiveError: aString [
 ]
 
 { #category : #'ui requests' }
@@ -710,7 +709,7 @@ UIManager2 >> spawnNewProcessIfThisIsUI: suspendedProcess [
 
 { #category : #'default actions' }
 UIManager2 >> syntaxErrorNotificationDefaultAction: anException [
-	self deprecated: 'store into ' , ITError className.
+
 	^ self subclassResponsibility
 ]
 
@@ -751,7 +750,7 @@ UIManager2 >> unhandledErrorDefaultAction: anException [
 	 in case if current ui manager having no override of this method).
 	 This method is only for documentation purposes."
 
-	self deprecated: 'store into ' , ITError className.
+	
 	Smalltalk snapshot: false andQuit: true
 ]
 
@@ -759,6 +758,5 @@ UIManager2 >> unhandledErrorDefaultAction: anException [
 UIManager2 >> warningDefaultAction: aWarning [
 	"Handle warning notification. Should be overidden by subclass."
 
-	self deprecated: 'store into ' , ITWarning className.
 	self subclassResponsibility
 ]

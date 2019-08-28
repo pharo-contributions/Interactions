@@ -1,9 +1,7 @@
 Class {
 	#name : #ITRequest,
-	#superclass : #Object,
+	#superclass : #ITUserInteraction,
 	#instVars : [
-		'message',
-		'title',
 		'initialAnswer',
 		'validationBlock',
 		'answerHeight',
@@ -17,15 +15,6 @@ ITRequest >> answerHeight: anInteger [
 	answerHeight := anInteger.
 ]
 
-{ #category : #action }
-ITRequest >> chooseFrom: aListOfChoices [
-	self flag: #lookAtIt.
-	^ UIManager default
-		chooseFrom: aListOfChoices
-		lines: #()
-		title: message
-]
-
 { #category : #accessing }
 ITRequest >> entryCompletion: anObject [
 	entryCompletion := anObject
@@ -36,9 +25,10 @@ ITRequest >> initialAnswer: anObject [
 	initialAnswer := anObject
 ]
 
-{ #category : #accessing }
-ITRequest >> message: anObject [
-	message := anObject
+{ #category : #private }
+ITRequest >> isValid: answer [
+	^ validationBlock isNil 
+		or: [ (validationBlock value: answer) not ]
 ]
 
 { #category : #action }
@@ -54,7 +44,7 @@ ITRequest >> request [
 	[ answer := UIManager default
 		request: message
 		initialAnswer: initialAnswer ]
-		doWhileTrue: [ answer isNotNil and: [ (validationBlock value: answer) not ] ].
+		doWhileTrue: [ answer isNotNil and: [ self isValid: answer ] ].
 	"answer is nil when the user press cancels. That's a possible answer we have to accept."
 	^ answer
 ]
@@ -71,24 +61,6 @@ ITRequest >> requestWithEntryCompletion [
 		request: message
 		initialAnswer: initialAnswer
 		entryCompletion: entryCompletion
-]
-
-{ #category : #action }
-ITRequest >> textEntryTitleEntryText [
-	self flag: #UIManagerSameA.
-	UIManager default
-		request: message
-		initialAnswer: initialAnswer
-		title: title
-	"UIManager default
-		textEntry: message
-		title: title
-		entryText: initialAnswer"
-]
-
-{ #category : #accessing }
-ITRequest >> title: anObject [
-	title := anObject
 ]
 
 { #category : #accessing }

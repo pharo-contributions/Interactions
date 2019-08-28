@@ -1,9 +1,7 @@
 Class {
 	#name : #ITConfirmation,
-	#superclass : #Object,
+	#superclass : #ITUserInteraction,
 	#instVars : [
-		'message',
-		'title',
 		'cancelLabel',
 		'cancelBlock',
 		'falseLabel',
@@ -69,11 +67,6 @@ ITConfirmation >> falseLabel [
 ]
 
 { #category : #accessing }
-ITConfirmation >> message: anObject [
-	message := anObject
-]
-
-{ #category : #accessing }
 ITConfirmation >> noLabel: aStringUseAsLabelForButton [
 	falseLabel := aStringUseAsLabelForButton
 ]
@@ -91,11 +84,6 @@ ITConfirmation >> question [
 { #category : #action }
 ITConfirmation >> questionWithoutCancel [
 	^ UIManager default questionWithoutCancel: message title: title
-]
-
-{ #category : #accessing }
-ITConfirmation >> title: aTitle [
-	title := aTitle
 ]
 
 { #category : #getteur }

@@ -3,9 +3,17 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'message',
-		'initialAnswer',
-		'entryCompletion',
 		'title'
 	],
 	#category : #Interactions
 }
+
+{ #category : #accessing }
+ITUserInteraction >> message: anObject [
+	message := anObject
+]
+
+{ #category : #accessing }
+ITUserInteraction >> title: anObject [
+	title := anObject
+]

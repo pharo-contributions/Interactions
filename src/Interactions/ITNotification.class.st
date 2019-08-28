@@ -1,5 +1,5 @@
 Class {
-	#name : #ITInform,
+	#name : #ITNotification,
 	#superclass : #Object,
 	#instVars : [
 		'message'
@@ -8,11 +8,11 @@ Class {
 }
 
 { #category : #'accessing - bounds' }
-ITInform >> inform [
+ITNotification >> inform [
 	^ UIManager default inform: message
 ]
 
 { #category : #accessing }
-ITInform >> message: anObject [
+ITNotification >> message: anObject [
 	message := anObject
 ]

@@ -1,8 +1,7 @@
 Class {
 	#name : #ITInformation,
-	#superclass : #Object,
+	#superclass : #ITUserInteraction,
 	#instVars : [
-		'message',
 		'aBlock'
 	],
 	#category : #Interactions
@@ -33,9 +32,4 @@ ITInformation >> deny [
 ITInformation >> informUserDuring [
 
 	^ UIManager default informUser: message during: aBlock
-]
-
-{ #category : #accessing }
-ITInformation >> message: anObject [
-	message := anObject
 ]

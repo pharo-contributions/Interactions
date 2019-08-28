@@ -2,33 +2,90 @@ Class {
 	#name : #ITFileRequest,
 	#superclass : #Object,
 	#instVars : [
-		'title',
-		'extensionsToShow',
-		'path'
+		'previewer',
+		'columns',
+		'bookmarks',
+		'okAction',
+		'defaultFolder',
+		'filtersCustomization'
 	],
 	#category : #Interactions
 }
 
+{ #category : #accessing }
+ITFileRequest >> bookmarks: anObject [
+	bookmarks := anObject
+]
+
 { #category : #action }
-ITFileRequest >> chooseFullFileName [
-	^ UIManager default
-		chooseFullFileName: title
-		extensions: extensionsToShow
-		path: path
-		preview: false.
+ITFileRequest >> chooseDirectory [
+	"
+	model := ITFileRequest new. 
+	model defaultFolder: '/home' asFileReference.
+	model chooseDirectory"
+
+	| fileDialog |
+	fileDialog := FDOpenDirectoryDialog new.
+	self communActionFor: fileDialog.
+	^ fileDialog confirm
+]
+
+{ #category : #action }
+ITFileRequest >> chooseFile [
+	| fileDialog |
+	fileDialog := FDOpenFileDialog new.
+	self communActionFor: fileDialog.
+	^ fileDialog confirm
 ]
 
 { #category : #accessing }
-ITFileRequest >> extensionsToShow: anObject [
-	extensionsToShow := anObject
+ITFileRequest >> columns: anObject [
+	columns := anObject
+]
+
+{ #category : #action }
+ITFileRequest >> communActionFor: fileDialog [
+	self configureFileDialog: fileDialog.
+	fileDialog openModalWithSpec
+]
+
+{ #category : #setup }
+ITFileRequest >> configureFileDialog: fileDialog [
+	"I do this because fileDialog have default value"
+
+	previewer ifNotNil: [ fileDialog previewer: previewer ].
+	columns ifNotNil: [ fileDialog column: columns ].
+	bookmarks ifNotNil: [ fileDialog bookmarks: bookmarks ].
+	okAction ifNotNil: [ fileDialog okAction: okAction ].
+	defaultFolder ifNotNil: [ fileDialog defaultFolder: defaultFolder ].
+	filtersCustomization
+		ifNotNil: [ fileDialog filtersCustomization: filtersCustomization ]
 ]
 
 { #category : #accessing }
-ITFileRequest >> path: anObject [
-	path := anObject
+ITFileRequest >> defaultFolder: anObject [
+	defaultFolder := anObject
 ]
 
 { #category : #accessing }
-ITFileRequest >> title: anObject [
-	title := anObject
+ITFileRequest >> filtersCustomization: anObject [
+	filtersCustomization := anObject
+]
+
+{ #category : #accessing }
+ITFileRequest >> okAction: anObject [
+	okAction := anObject
+]
+
+{ #category : #accessing }
+ITFileRequest >> previewer: anObject [
+	previewer := anObject
+]
+
+{ #category : #action }
+ITFileRequest >> saveFile [
+	| fileDialog |
+	fileDialog := FDSaveFileDialog new.
+	self communActionFor: fileDialog.
+	^ fileDialog selectedFile
 ]

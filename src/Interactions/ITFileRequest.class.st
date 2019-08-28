@@ -1,3 +1,10 @@
+"
+I'm using to interact with user by asking to choose a File/Directory or save a directory 
+
+for more information about how to customize 
+look at 
+	FDFileDialogPresenter clas >> #fullExample
+"
 Class {
 	#name : #ITFileRequest,
 	#superclass : #Object,
@@ -7,14 +14,15 @@ Class {
 		'bookmarks',
 		'okAction',
 		'defaultFolder',
-		'filtersCustomization'
+		'filtersCustomization',
+		'extensionString'
 	],
 	#category : #Interactions
 }
 
 { #category : #accessing }
-ITFileRequest >> bookmarks: anObject [
-	bookmarks := anObject
+ITFileRequest >> bookmarks: aCollectionOfBookmark [
+	bookmarks := aCollectionOfBookmark
 ]
 
 { #category : #action }
@@ -39,14 +47,20 @@ ITFileRequest >> chooseFile [
 ]
 
 { #category : #accessing }
-ITFileRequest >> columns: anObject [
-	columns := anObject
+ITFileRequest >> columns: aCollectionOfColumn [
+	columns := aCollectionOfColumn
 ]
 
 { #category : #action }
 ITFileRequest >> communActionFor: fileDialog [
 	self configureFileDialog: fileDialog.
 	fileDialog openModalWithSpec
+]
+
+{ #category : #action }
+ITFileRequest >> configurationForSaveFileDialog: fileDialog [
+	extensionString ifNotNil: [ fileDialog extension: extensionString ].
+	self communActionFor: fileDialog
 ]
 
 { #category : #setup }
@@ -63,29 +77,30 @@ ITFileRequest >> configureFileDialog: fileDialog [
 ]
 
 { #category : #accessing }
-ITFileRequest >> defaultFolder: anObject [
-	defaultFolder := anObject
+ITFileRequest >> defaultFolder: aFileReference [
+	defaultFolder := aFileReference
 ]
 
 { #category : #accessing }
-ITFileRequest >> filtersCustomization: anObject [
-	filtersCustomization := anObject
+ITFileRequest >> filtersCustomization: aCollectionOfFilter [
+	filtersCustomization := aCollectionOfFilter
 ]
 
 { #category : #accessing }
-ITFileRequest >> okAction: anObject [
-	okAction := anObject
+ITFileRequest >> okAction: aBlockUseByTheOkButton [
+	"this block take one argument , a FileReference"
+	okAction := aBlockUseByTheOkButton
 ]
 
 { #category : #accessing }
-ITFileRequest >> previewer: anObject [
-	previewer := anObject
+ITFileRequest >> previewer: aPreviewer [
+	previewer := aPreviewer
 ]
 
 { #category : #action }
 ITFileRequest >> saveFile [
 	| fileDialog |
 	fileDialog := FDSaveFileDialog new.
-	self communActionFor: fileDialog.
+	self configurationForSaveFileDialog: fileDialog.
 	^ fileDialog selectedFile
 ]

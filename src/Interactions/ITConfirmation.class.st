@@ -12,8 +12,8 @@ Class {
 }
 
 { #category : #accessing }
-ITConfirmation >> cancelBlock: anObject [
-	cancelBlock := anObject
+ITConfirmation >> cancelBlock: aBlock [
+	cancelBlock := aBlock
 ]
 
 { #category : #getteur }

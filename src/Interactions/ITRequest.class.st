@@ -16,13 +16,13 @@ ITRequest >> answerHeight: anInteger [
 ]
 
 { #category : #accessing }
-ITRequest >> entryCompletion: anObject [
-	entryCompletion := anObject
+ITRequest >> entryCompletion: anEntryCompletion [
+	entryCompletion := anEntryCompletion
 ]
 
 { #category : #accessing }
-ITRequest >> initialAnswer: anObject [
-	initialAnswer := anObject
+ITRequest >> initialAnswer: aString [
+	initialAnswer := aString
 ]
 
 { #category : #private }
@@ -56,7 +56,6 @@ ITRequest >> requestPassword [
 
 { #category : #action }
 ITRequest >> requestWithEntryCompletion [
-	self flag: #UIManagerSameA.
 	^ UIManager default
 		request: message
 		initialAnswer: initialAnswer
@@ -64,6 +63,6 @@ ITRequest >> requestWithEntryCompletion [
 ]
 
 { #category : #accessing }
-ITRequest >> validationBlock: anObject [
-	validationBlock := anObject
+ITRequest >> validationBlock: aBlock [
+	validationBlock := aBlock
 ]

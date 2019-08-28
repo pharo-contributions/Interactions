@@ -1,3 +1,6 @@
+"
+I notify user by sending bubble notification
+"
 Class {
 	#name : #ITNotification,
 	#superclass : #Object,
@@ -13,6 +16,6 @@ ITNotification >> inform [
 ]
 
 { #category : #accessing }
-ITNotification >> message: anObject [
-	message := anObject
+ITNotification >> message: aString [
+	message := aString
 ]

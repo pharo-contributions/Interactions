@@ -12,8 +12,14 @@ Class {
 }
 
 { #category : #accessing }
-ITProgressNotification >> block: anObject [
-	block := anObject
+ITProgressNotification >> block: aBlock [
+	"
+	aBlock could be this
+	[:bar|
+			#(one two three) do:[:info|
+				bar label: info.
+				(Delay forSeconds: 1) wait]]"
+	block := aBlock
 ]
 
 { #category : #action }
@@ -27,6 +33,6 @@ ITProgressNotification >> informUserDuringBlock [
 ]
 
 { #category : #accessing }
-ITProgressNotification >> string: anObject [
-	string := anObject
+ITProgressNotification >> string: aString [
+	string := aString
 ]

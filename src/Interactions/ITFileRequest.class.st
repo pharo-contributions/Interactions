@@ -20,6 +20,19 @@ Class {
 	#category : #Interactions
 }
 
+{ #category : #example }
+ITFileRequest class >> example [ 
+	ITFileRequest new
+		"previewer:  ;"
+		"columns: ;"
+		"bookmarks: ;"
+		okAction: [:fileReference | fileReference inspect ] ;
+		"defaultFolder: ;"
+		"filtersCustomization: ;"
+		"extensionString: ;"
+		chooseDirectory
+]
+
 { #category : #accessing }
 ITFileRequest >> bookmarks: aCollectionOfBookmark [
 	bookmarks := aCollectionOfBookmark
@@ -34,7 +47,7 @@ ITFileRequest >> chooseDirectory [
 
 	| fileDialog |
 	fileDialog := FDOpenDirectoryDialog new.
-	self communActionFor: fileDialog.
+	self commonActionFor: fileDialog.
 	^ fileDialog confirm
 ]
 
@@ -42,7 +55,7 @@ ITFileRequest >> chooseDirectory [
 ITFileRequest >> chooseFile [
 	| fileDialog |
 	fileDialog := FDOpenFileDialog new.
-	self communActionFor: fileDialog.
+	self commonActionFor: fileDialog.
 	^ fileDialog confirm
 ]
 
@@ -51,8 +64,8 @@ ITFileRequest >> columns: aCollectionOfColumn [
 	columns := aCollectionOfColumn
 ]
 
-{ #category : #action }
-ITFileRequest >> communActionFor: fileDialog [
+{ #category : #private }
+ITFileRequest >> commonActionFor: fileDialog [
 	self configureFileDialog: fileDialog.
 	fileDialog openModalWithSpec
 ]
@@ -60,7 +73,7 @@ ITFileRequest >> communActionFor: fileDialog [
 { #category : #action }
 ITFileRequest >> configurationForSaveFileDialog: fileDialog [
 	extensionString ifNotNil: [ fileDialog extension: extensionString ].
-	self communActionFor: fileDialog
+	self commonActionFor: fileDialog
 ]
 
 { #category : #setup }

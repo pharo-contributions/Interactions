@@ -48,20 +48,6 @@ ITItemsChooserPresenter class >> example [
 ]
 
 { #category : #'instance creation' }
-ITItemsChooserPresenter class >> exampleDisplayBlockSingleSelection [
-	| presenter |
-	presenter := ITItemsChooserPresenter new
-		model: (1 to: 10);
-		displayBlock: [ :item | item * 2 ];
-		openModalWithSpec;
-		yourself.
-	presenter isCancelled
-		ifTrue: [ ^ self inform: 'Item chooser has been cancelled!' ].
-	self inform: 'You clicked accept button'.
-	presenter selectedItem inspect
-]
-
-{ #category : #'instance creation' }
 ITItemsChooserPresenter class >> exampleMultiSelection [
 	| presenter |
 	presenter := ITItemsChooserPresenter new
@@ -73,6 +59,20 @@ ITItemsChooserPresenter class >> exampleMultiSelection [
 		ifTrue: [ ^ self inform: 'Item chooser has been cancelled!' ].
 	self inform: 'You clicked accept button'.
 	presenter selectedItems inspect
+]
+
+{ #category : #'instance creation' }
+ITItemsChooserPresenter class >> exampleSingleSelection [
+	| presenter |
+	presenter := ITItemsChooserPresenter new
+		model: (1 to: 10);
+		displayBlock: [ :item | item * 2 ];
+		openModalWithSpec;
+		yourself.
+	presenter isCancelled
+		ifTrue: [ ^ self inform: 'Item chooser has been cancelled!' ].
+	self inform: 'You clicked accept button'.
+	presenter selectedItem inspect
 ]
 
 { #category : #'class initialization' }
@@ -112,7 +112,7 @@ ITItemsChooserPresenter >> checkBoxColumn [
 	^ (SpCheckBoxTableColumn
 		evaluated: [ :item | selectedItems includes: item ])
 		onActivation: [ :item | selectedItems add: item ];
-		onDesactivation: [ :item | selectedItems remove: item ifAbsent: [ 1 halt ] ];
+		onDesactivation: [ :item | selectedItems remove: item  ];
 		width: 30
 ]
 
@@ -153,7 +153,8 @@ ITItemsChooserPresenter >> initializeDialogWindow: aWindowPresenter [
 ITItemsChooserPresenter >> initializeWidgets [
 	columns := Columns.
 	tablePresenter := self newTable.
-	tablePresenter columns: columns
+	tablePresenter columns: columns.
+	tablePresenter selectIndex: 1
 ]
 
 { #category : #api }
@@ -180,4 +181,9 @@ ITItemsChooserPresenter >> selectedItem [
 { #category : #api }
 ITItemsChooserPresenter >> selectedItems [
 	^ selectedItems
+]
+
+{ #category : #accessing }
+ITItemsChooserPresenter >> tablePresenter [
+	^ tablePresenter
 ]

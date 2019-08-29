@@ -5,7 +5,8 @@ Class {
 	#name : #ITItemChooserPresenterTest,
 	#superclass : #TestCase,
 	#instVars : [
-		'presenter'
+		'presenter',
+		'window'
 	],
 	#category : #'Interactions-widgets-Tests'
 }
@@ -13,4 +14,28 @@ Class {
 { #category : #running }
 ITItemChooserPresenterTest >> setUp [
 	presenter := ITItemsChooserPresenter new
+]
+
+{ #category : #tests }
+ITItemChooserPresenterTest >> testTriggerOkActionShouldIsCancelledFalse [
+	presenter openDialogWithSpec triggerOkAction.
+	self deny: presenter isCancelled
+]
+
+{ #category : #tests }
+ITItemChooserPresenterTest >> testWhenSelectItemAndTriggerCancelButtonShouldSelectItemBeSet [
+	presenter model: #(1 2 3 4 5 6).
+	presenter tablePresenter selectIndex: 2.
+	window := presenter openDialogWithSpec.
+	window triggerCancelAction.
+	self assert: presenter isCancelled 
+]
+
+{ #category : #tests }
+ITItemChooserPresenterTest >> testWhenSelectItemAndTriggerOkButtonShouldSelectItemBeSet [
+	presenter model: #(1 2 3 4 5 6).
+	presenter tablePresenter selectIndex: 2.
+	window := presenter openDialogWithSpec.
+	window triggerOkAction.
+	self assert: presenter selectedItem equals: 2.
 ]

@@ -12,5 +12,5 @@ Class {
 
 { #category : #running }
 ITCollectionChooserTest >> setUp [
-	presenter := ITCollectionChooser new
+	presenter := ITItemChooserPresenter new
 ]

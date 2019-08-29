@@ -12,5 +12,5 @@ Class {
 
 { #category : #running }
 ITItemChooserPresenterTest >> setUp [
-	presenter := ITItemChooserPresenter new
+	presenter := ITItemsChooserPresenter new
 ]

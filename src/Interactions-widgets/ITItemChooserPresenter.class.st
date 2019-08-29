@@ -17,13 +17,12 @@ ITItemChooserPresenter class >> defaultSpec [
 
 { #category : #'instance creation' }
 ITItemChooserPresenter class >> example [
-	| selectedValue |
-	selectedValue := ITItemChooserPresenter openOn: (1 to: 10).
-	selectedValue
-		ifNil: [ selectedValue inspect.
-			^ self inform: 'this case is when you click on cancel' ].
-	self inform: 'you have click accept button'.
-	selectedValue inspect
+	| presenter |
+	presenter := ITItemChooserPresenter openOn: (1 to: 10).
+	presenter isCancelled 
+		ifTrue: [ ^ self inform: 'Item chooser has been cancelled!' ].
+	self inform: 'You clicked accept button'.
+	presenter selectedItem inspect
 ]
 
 { #category : #'instance creation' }
@@ -41,7 +40,7 @@ ITItemChooserPresenter class >> openOn: aCollection withDisplayBlock: aDisplayBl
 		model: aCollection;
 		displayBlock: aDisplayBlock;
 		openModalWithSpec.
-	^ presenter selectedItem
+	^ presenter
 ]
 
 { #category : #api }
@@ -53,13 +52,21 @@ ITItemChooserPresenter >> displayBlock: aDisplayBlock [
 ITItemChooserPresenter >> initializeDialogWindow: aWindowPresenter [
 	super initializeDialogWindow: aWindowPresenter.
 	aWindowPresenter
-		okAction: [ selectedItem := listPresenter selection selectedItem ]
+		okAction: [ 
+			aWindowPresenter beOk.
+			selectedItem := listPresenter selection selectedItem.
+			aWindowPresenter close ]
 ]
 
 { #category : #initialization }
 ITItemChooserPresenter >> initializeWidgets [ 
 	listPresenter := self newList.
 	
+]
+
+{ #category : #api }
+ITItemChooserPresenter >> isCancelled [
+	^ self window isCancelled
 ]
 
 { #category : #api }

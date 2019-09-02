@@ -16,7 +16,6 @@ Class {
 	#name : #ITItemsChooserPresenter,
 	#superclass : #SpPresenter,
 	#instVars : [
-		'selectedItem',
 		'tablePresenter',
 		'stringColumnDisplayBlock',
 		'columns',
@@ -90,7 +89,7 @@ ITItemsChooserPresenter class >> openOn: aCollection [
 { #category : #'instance creation' }
 ITItemsChooserPresenter class >> openOn: aCollection withDisplayBlock: aDisplayBlock [
 	| presenter |
-	presenter := ITItemsChooserPresenter new.
+	presenter := self new.
 	presenter 
 		model: aCollection;
 		displayBlock: aDisplayBlock;
@@ -140,16 +139,6 @@ ITItemsChooserPresenter >> initialize [
 ]
 
 { #category : #initialization }
-ITItemsChooserPresenter >> initializeDialogWindow: aWindowPresenter [
-	super initializeDialogWindow: aWindowPresenter.
-	aWindowPresenter
-		okAction: [ 
-			aWindowPresenter beOk.
-			selectedItem := tablePresenter selection selectedItem.
-			aWindowPresenter close ]
-]
-
-{ #category : #initialization }
 ITItemsChooserPresenter >> initializeWidgets [
 	columns := Columns.
 	tablePresenter := self newTable.
@@ -175,7 +164,9 @@ ITItemsChooserPresenter >> newStringTableColumnEvaluated: aDisplayBlock [
 
 { #category : #api }
 ITItemsChooserPresenter >> selectedItem [
-	^ selectedItem
+	^ self isCancelled 
+		ifTrue: [ nil ]
+		ifFalse: [ tablePresenter selectedItem ]
 ]
 
 { #category : #api }

@@ -17,25 +17,36 @@ ITItemChooserPresenterTest >> setUp [
 ]
 
 { #category : #tests }
-ITItemChooserPresenterTest >> testTriggerOkActionShouldIsCancelledFalse [
+ITItemChooserPresenterTest >> testItemSelectedWhenSelectItemAndTriggerOkButton [
+	presenter model: #(1 2 3 4 5 6).
+	presenter tablePresenter selectIndex: 2.
+	
+	window := presenter openDialogWithSpec.
+	window triggerOkAction.
+	
+	self assert: presenter selectedItem equals: 2.
+]
+
+{ #category : #tests }
+ITItemChooserPresenterTest >> testPresenterIsCancelledWhenOkActionTriggerred [
+	presenter openDialogWithSpec triggerCancelAction.
+	self assert: presenter isCancelled
+]
+
+{ #category : #tests }
+ITItemChooserPresenterTest >> testPresenterIsNotCancelledWhenOkActionTriggerred [
 	presenter openDialogWithSpec triggerOkAction.
 	self deny: presenter isCancelled
 ]
 
 { #category : #tests }
-ITItemChooserPresenterTest >> testWhenSelectItemAndTriggerCancelButtonShouldSelectItemBeSet [
+ITItemChooserPresenterTest >> testSelectionIsNilWhenSelectItemAndTriggerCancelButton [
 	presenter model: #(1 2 3 4 5 6).
 	presenter tablePresenter selectIndex: 2.
+	
 	window := presenter openDialogWithSpec.
 	window triggerCancelAction.
-	self assert: presenter isCancelled 
-]
-
-{ #category : #tests }
-ITItemChooserPresenterTest >> testWhenSelectItemAndTriggerOkButtonShouldSelectItemBeSet [
-	presenter model: #(1 2 3 4 5 6).
-	presenter tablePresenter selectIndex: 2.
-	window := presenter openDialogWithSpec.
-	window triggerOkAction.
-	self assert: presenter selectedItem equals: 2.
+	
+	self assert: presenter isCancelled.
+	self assert: presenter selectedItem equals: nil.
 ]

@@ -164,9 +164,9 @@ ITItemsChooserPresenter >> newStringTableColumnEvaluated: aDisplayBlock [
 
 { #category : #api }
 ITItemsChooserPresenter >> selectedItem [
-	^ self isCancelled 
+	^ self isCancelled
 		ifTrue: [ nil ]
-		ifFalse: [ tablePresenter selectedItem ]
+		ifFalse: [ tablePresenter selection selectedItem ]
 ]
 
 { #category : #api }

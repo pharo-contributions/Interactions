@@ -1,3 +1,8 @@
+"
+I represent a user interaction to confirm an intent.
+I can be canceled, approved or denied.
+My actions labels can be customized.
+"
 Class {
 	#name : #ITConfirmation,
 	#superclass : #ITUserInteraction,
@@ -11,27 +16,35 @@ Class {
 	#category : #Interactions
 }
 
+{ #category : #example }
+ITConfirmation class >> example [
+	^ self new
+		message: 'I''m a reification of a confirmation to be delivered to the user';
+		title: 'ITConfirmation example';
+		yourself
+]
+
 { #category : #accessing }
 ITConfirmation >> cancelBlock: aBlock [
 	cancelBlock := aBlock
 ]
 
-{ #category : #getteur }
+{ #category : #accessing }
 ITConfirmation >> cancelLabel [
 	^ cancelLabel ifNil: [ cancelLabel := 'cancel' ]
 ]
 
 { #category : #accessing }
-ITConfirmation >> cancelLabel: aStringUseAsLabelForButton [
-	cancelLabel := aStringUseAsLabelForButton
+ITConfirmation >> cancelLabel: aString [
+	cancelLabel := aString
 ]
 
 { #category : #action }
 ITConfirmation >> confirm [
 	^ UIManager default
 		confirm: message
-		trueChoice: self trueLabel
-		falseChoice: self falseLabel
+		trueChoice: self yesLabel
+		falseChoice: self noLabel
 		cancelChoice: self cancelLabel
 		default: self defaultChoice
 ]
@@ -41,34 +54,27 @@ ITConfirmation >> confirmWithCancelBlock [
 	^ UIManager default confirm: message orCancel: cancelBlock
 ]
 
-{ #category : #getteur }
-ITConfirmation >> defaultBoolean [
-	^ defaultChoice ifNil: [ defaultChoice := nil ]
-]
-
-{ #category : #getteur }
+{ #category : #accessing }
 ITConfirmation >> defaultChoice [
-	^ defaultChoice ifNil: [ defaultChoice := nil ]
+	^ defaultChoice
 ]
 
 { #category : #accessing }
-ITConfirmation >> defaultChoice: boolean [
-	"aSymbol have to be:
-		true
-		false
-		nil
-		"
-	defaultChoice := boolean
+ITConfirmation >> defaultChoice: aSymbol [
+	#(#true #false #nil) 
+		detect: aSymbol ifNone: [ self error: aSymbol, ' is not a valid choice!' ].
+		
+	defaultChoice := aSymbol
 ]
 
-{ #category : #getteur }
-ITConfirmation >> falseLabel [
+{ #category : #accessing }
+ITConfirmation >> noLabel [
 	^ falseLabel ifNil: [ falseLabel := 'no' ]
 ]
 
 { #category : #accessing }
-ITConfirmation >> noLabel: aStringUseAsLabelForButton [
-	falseLabel := aStringUseAsLabelForButton
+ITConfirmation >> noLabel: aString [
+	falseLabel := aString
 ]
 
 { #category : #action }
@@ -86,12 +92,12 @@ ITConfirmation >> questionWithoutCancel [
 	^ UIManager default questionWithoutCancel: message title: title
 ]
 
-{ #category : #getteur }
-ITConfirmation >> trueLabel [
+{ #category : #accessing }
+ITConfirmation >> yesLabel [
 	^ trueLabel ifNil: [ trueLabel := 'yes' ]
 ]
 
 { #category : #accessing }
-ITConfirmation >> yesLabel: aStringUseAsLabelForButton [
-	trueLabel := aStringUseAsLabelForButton
+ITConfirmation >> yesLabel: aString [
+	trueLabel := aString
 ]

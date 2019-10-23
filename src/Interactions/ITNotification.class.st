@@ -1,18 +1,37 @@
 "
-I notify user by sending bubble notification
+I notify user by sending notifications that display a few seconds, then disappear.
+You can configure an action to execute when there is a click on the notification widget.
 "
 Class {
 	#name : #ITNotification,
 	#superclass : #Object,
 	#instVars : [
-		'message'
+		'message',
+		'clickAction'
 	],
 	#category : #Interactions
 }
 
-{ #category : #'accessing - bounds' }
-ITNotification >> inform [
-	^ UIManager default inform: message
+{ #category : #example }
+ITNotification class >> example [ 
+	^ self new 
+		message: 'A simple notification';
+		yourself 
+]
+
+{ #category : #accessing }
+ITNotification >> clickAction [
+	^ clickAction
+]
+
+{ #category : #accessing }
+ITNotification >> clickAction: aBlock [
+	clickAction := aBlock
+]
+
+{ #category : #accessing }
+ITNotification >> message [
+	^ message
 ]
 
 { #category : #accessing }

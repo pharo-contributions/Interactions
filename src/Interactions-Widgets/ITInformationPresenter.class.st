@@ -6,8 +6,8 @@ Class {
 	#name : #ITInformationPresenter,
 	#superclass : #SpPresenterWithModel,
 	#instVars : [
-		'messageLabel',
-		'iconPresenter'
+		'iconPresenter',
+		'messageText'
 	],
 	#category : #'Interactions-Widgets'
 }
@@ -16,7 +16,7 @@ Class {
 ITInformationPresenter class >> defaultSpec [
 	^ SpBoxLayout newHorizontal
 		add: #iconPresenter width: 150;
-		add: #messageLabel;
+		add: #messageText;
 		yourself
 ]
 
@@ -47,7 +47,7 @@ ITInformationPresenter >> initializePresenters [
 	iconPresenter := self newImage
 		image: self icon;
 		yourself.
-	messageLabel := self newText 
+	messageText := self newText 
 		text: self model message;
 		disable;
 		yourself.
@@ -57,4 +57,9 @@ ITInformationPresenter >> initializePresenters [
 ITInformationPresenter >> initializeWindow: aWindowPresenter [
 	super initializeWindow: aWindowPresenter. 
 	aWindowPresenter title: self model title
+]
+
+{ #category : #private }
+ITInformationPresenter >> messageText [
+	^ messageText
 ]

@@ -19,6 +19,16 @@ ITConfirmationPresenterTest >> tearDown [
 ]
 
 { #category : #tests }
+ITConfirmationPresenterTest >> testDialogHasThreeButtons [
+	"yes no cancel"
+	window := presenter openDialogWithSpec.
+	
+	self
+		assert: window buttons size
+		equals: 3.
+]
+
+{ #category : #tests }
 ITConfirmationPresenterTest >> testGetFalseWhenClickingOnFalseButton [
 	| answer |
 	window := presenter openDialogWithSpec.
@@ -31,7 +41,6 @@ ITConfirmationPresenterTest >> testGetFalseWhenClickingOnFalseButton [
 
 { #category : #tests }
 ITConfirmationPresenterTest >> testGetInteractionCancelledExceptionWhenClickingOnCancelButton [
-	| answer |
 	window := presenter openDialogWithSpec.
 	self 
 		should: [ window triggerCancelAction ]

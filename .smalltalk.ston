@@ -1,0 +1,13 @@
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'Interactions',
+      #directory : 'src'
+    }
+  ],
+  #testing : {
+    #include : {
+      #packages : [ 'Interactions-*' ]
+     }
+  }
+}

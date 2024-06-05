@@ -3,38 +3,39 @@ I notify user by sending notifications that display a few seconds, then disappea
 You can configure an action to execute when there is a click on the notification widget.
 "
 Class {
-	#name : #ITNotification,
-	#superclass : #Object,
+	#name : 'ITNotification',
+	#superclass : 'Object',
 	#instVars : [
 		'message',
 		'clickAction'
 	],
-	#category : #Interactions
+	#category : 'Interactions',
+	#package : 'Interactions'
 }
 
-{ #category : #example }
+{ #category : 'example' }
 ITNotification class >> example [ 
 	^ self new 
 		message: 'A simple notification';
 		yourself 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITNotification >> clickAction [
 	^ clickAction
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITNotification >> clickAction: aBlock [
 	clickAction := aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITNotification >> message [
 	^ message
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITNotification >> message: aString [
 	message := aString
 ]

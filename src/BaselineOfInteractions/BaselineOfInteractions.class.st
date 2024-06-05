@@ -1,10 +1,11 @@
 Class {
-	#name : #BaselineOfInteractions,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfInteractions
+	#name : 'BaselineOfInteractions',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfInteractions',
+	#package : 'BaselineOfInteractions'
 }
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfInteractions >> baseline: spec [
 
 	<baseline>

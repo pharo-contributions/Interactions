@@ -5,15 +5,16 @@ I can be configured to be an information of different types: abort, access denie
 I'm used by the UIManager to show (or not, dependending on the interaction mode) a UI corrresponding to this model.
 "
 Class {
-	#name : #ITInformation,
-	#superclass : #ITUserInteraction,
+	#name : 'ITInformation',
+	#superclass : 'ITUserInteraction',
 	#instVars : [
 		'type'
 	],
-	#category : #Interactions
+	#category : 'Interactions',
+	#package : 'Interactions'
 }
 
-{ #category : #example }
+{ #category : 'example' }
 ITInformation class >> example [ 
 	^ self new 
 		message: 'I''m a reification of an information to be delivered to the user';
@@ -22,25 +23,25 @@ ITInformation class >> example [
 		yourself
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 ITInformation >> beAbort [
 	type := #abort.
 	title ifNil: [ title := 'Error' translated ]
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 ITInformation >> beAccessDenied [
 	type := #deny.
 	title ifNil: [ title := 'Access Denied' translated ]
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 ITInformation >> beAlert [
 	type := #alert.
 	title ifNil: [ title := 'Alert!' translated ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITInformation >> type [ 
 	^ type
 ]

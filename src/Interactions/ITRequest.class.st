@@ -1,44 +1,45 @@
 Class {
-	#name : #ITRequest,
-	#superclass : #ITUserInteraction,
+	#name : 'ITRequest',
+	#superclass : 'ITUserInteraction',
 	#instVars : [
 		'initialAnswer',
 		'validationBlock',
 		'answerHeight',
 		'entryCompletion'
 	],
-	#category : #Interactions
+	#category : 'Interactions',
+	#package : 'Interactions'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITRequest >> answerHeight: anInteger [
 	answerHeight := anInteger.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITRequest >> entryCompletion: anEntryCompletion [
 	entryCompletion := anEntryCompletion
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITRequest >> initialAnswer: aString [
 	initialAnswer := aString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ITRequest >> isValid: answer [
 	^ validationBlock isNil 
 		or: [ (validationBlock value: answer) not ]
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 ITRequest >> multiLineRequest [
 	^ UIManager default multiLineRequest: message 
 		initialAnswer: initialAnswer
 		answerHeight: answerHeight
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 ITRequest >> request [
 	| answer |
 	[ answer := UIManager default
@@ -49,12 +50,12 @@ ITRequest >> request [
 	^ answer
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 ITRequest >> requestPassword [
 	UIManager default requestPassword: message
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 ITRequest >> requestWithEntryCompletion [
 	^ UIManager default
 		request: message
@@ -62,7 +63,7 @@ ITRequest >> requestWithEntryCompletion [
 		entryCompletion: entryCompletion
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITRequest >> validationBlock: aBlock [
 	validationBlock := aBlock
 ]

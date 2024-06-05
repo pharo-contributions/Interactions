@@ -1,1 +1,1 @@
-Package { #name : #'Interactions-Widgets-Tests' }
+Package { #name : 'Interactions-Widgets-Tests' }

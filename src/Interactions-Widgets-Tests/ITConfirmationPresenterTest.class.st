@@ -1,24 +1,25 @@
 Class {
-	#name : #ITConfirmationPresenterTest,
-	#superclass : #TestCase,
+	#name : 'ITConfirmationPresenterTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'presenter',
 		'window'
 	],
-	#category : #'Interactions-Widgets-Tests'
+	#category : 'Interactions-Widgets-Tests',
+	#package : 'Interactions-Widgets-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 ITConfirmationPresenterTest >> setUp [
 	presenter := ITConfirmationPresenter on: ITConfirmation example
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ITConfirmationPresenterTest >> tearDown [ 
 	window close
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ITConfirmationPresenterTest >> testDialogHasThreeButtons [
 	"yes no cancel"
 	window := presenter openDialogWithSpec.
@@ -28,7 +29,7 @@ ITConfirmationPresenterTest >> testDialogHasThreeButtons [
 		equals: 3.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ITConfirmationPresenterTest >> testGetFalseWhenClickingOnFalseButton [
 	| answer |
 	window := presenter openDialogWithSpec.
@@ -39,7 +40,7 @@ ITConfirmationPresenterTest >> testGetFalseWhenClickingOnFalseButton [
 		equals: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ITConfirmationPresenterTest >> testGetInteractionCancelledExceptionWhenClickingOnCancelButton [
 	window := presenter openDialogWithSpec.
 	self 
@@ -47,7 +48,7 @@ ITConfirmationPresenterTest >> testGetInteractionCancelledExceptionWhenClickingO
 		raise: SpInteractionCancelled.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ITConfirmationPresenterTest >> testGetTrueWhenClickingOnTrueButton [
 	| answer |
 	window := presenter openDialogWithSpec.

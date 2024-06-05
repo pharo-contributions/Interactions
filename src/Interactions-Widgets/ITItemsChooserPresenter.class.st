@@ -13,8 +13,8 @@ selectedItems
 	return a collection of Item 
 "
 Class {
-	#name : #ITItemsChooserPresenter,
-	#superclass : #SpPresenter,
+	#name : 'ITItemsChooserPresenter',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'tablePresenter',
 		'stringColumnDisplayBlock',
@@ -26,17 +26,18 @@ Class {
 	#classVars : [
 		'Columns'
 	],
-	#category : #'Interactions-Widgets'
+	#category : 'Interactions-Widgets',
+	#package : 'Interactions-Widgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 ITItemsChooserPresenter class >> defaultSpec [
 	^ SpBoxLayout newVertical
 		add: #tablePresenter;
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ITItemsChooserPresenter class >> example [
 	| presenter |
 	presenter := ITItemsChooserPresenter openOn: (1 to: 10).
@@ -46,7 +47,7 @@ ITItemsChooserPresenter class >> example [
 	presenter selectedItem inspect
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ITItemsChooserPresenter class >> exampleMultiSelection [
 	| presenter |
 	presenter := ITItemsChooserPresenter new
@@ -60,7 +61,7 @@ ITItemsChooserPresenter class >> exampleMultiSelection [
 	presenter selectedItems inspect
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ITItemsChooserPresenter class >> exampleSingleSelection [
 	| presenter |
 	presenter := ITItemsChooserPresenter new
@@ -74,19 +75,19 @@ ITItemsChooserPresenter class >> exampleSingleSelection [
 	presenter selectedItem inspect
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 ITItemsChooserPresenter class >> initialize [
 	Columns := { SpStringTableColumn title: 'name' evaluated: [:item | item asString  ] }
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ITItemsChooserPresenter class >> openOn: aCollection [
 	^ self
 		openOn: aCollection
 		withDisplayBlock: [ :item | item asString ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ITItemsChooserPresenter class >> openOn: aCollection withDisplayBlock: aDisplayBlock [
 	| presenter |
 	presenter := self new.
@@ -97,7 +98,7 @@ ITItemsChooserPresenter class >> openOn: aCollection withDisplayBlock: aDisplayB
 	^ presenter
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 ITItemsChooserPresenter >> beMultipleSelection [
 	isMultiSelection := true.
 	self
@@ -106,7 +107,7 @@ ITItemsChooserPresenter >> beMultipleSelection [
 			(SpStringTableColumn evaluated: [ :item | item asString ])}
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ITItemsChooserPresenter >> checkBoxColumn [
 	^ (SpCheckBoxTableColumn
 		evaluated: [ :item | selectedItems includes: item ])
@@ -115,12 +116,12 @@ ITItemsChooserPresenter >> checkBoxColumn [
 		width: 30
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 ITItemsChooserPresenter >> columns: aCollectionOfColumn [
 	tablePresenter columns: aCollectionOfColumn
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 ITItemsChooserPresenter >> displayBlock: aDisplayBlock [
 	isMultiSelection
 		ifTrue: [ self
@@ -131,14 +132,14 @@ ITItemsChooserPresenter >> displayBlock: aDisplayBlock [
 			[ self columns: {(self newStringTableColumnEvaluated: aDisplayBlock)} ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 ITItemsChooserPresenter >> initialize [
 	super initialize.
 	selectedItems := OrderedCollection new.
 	isMultiSelection := false
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 ITItemsChooserPresenter >> initializeWidgets [
 	columns := Columns.
 	tablePresenter := self newTable.
@@ -146,35 +147,35 @@ ITItemsChooserPresenter >> initializeWidgets [
 	tablePresenter selectIndex: 1
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 ITItemsChooserPresenter >> isCancelled [
 	^ self window isCancelled
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 ITItemsChooserPresenter >> model: aCollection [
 	tablePresenter items: aCollection.
 	items := aCollection copy
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ITItemsChooserPresenter >> newStringTableColumnEvaluated: aDisplayBlock [
 	^ SpStringTableColumn evaluated: aDisplayBlock
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 ITItemsChooserPresenter >> selectedItem [
 	^ self isCancelled
 		ifTrue: [ nil ]
 		ifFalse: [ tablePresenter selection selectedItem ]
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 ITItemsChooserPresenter >> selectedItems [
 	^ selectedItems
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITItemsChooserPresenter >> tablePresenter [
 	^ tablePresenter
 ]

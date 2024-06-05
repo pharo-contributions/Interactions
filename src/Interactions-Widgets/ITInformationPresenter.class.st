@@ -3,16 +3,17 @@ I notify the user of different kind of information: alert, abort, accessDenied.
 I open myself in a dialog box.
 "
 Class {
-	#name : #ITInformationPresenter,
-	#superclass : #SpPresenterWithModel,
+	#name : 'ITInformationPresenter',
+	#superclass : 'SpPresenterWithModel',
 	#instVars : [
 		'iconPresenter',
 		'messageText'
 	],
-	#category : #'Interactions-Widgets'
+	#category : 'Interactions-Widgets',
+	#package : 'Interactions-Widgets'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 ITInformationPresenter class >> defaultSpec [
 	^ SpBoxLayout newHorizontal
 		add: #iconPresenter width: 150;
@@ -20,12 +21,12 @@ ITInformationPresenter class >> defaultSpec [
 		yourself
 ]
 
-{ #category : #example }
+{ #category : 'example' }
 ITInformationPresenter class >> example [
 	(self on: ITInformation example) openDialogWithSpec
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ITInformationPresenter >> icon [ 
 	self model type = #abort
 		ifTrue: [ ^ (self iconNamed: #stop) magnifyBy: 5 ].
@@ -36,13 +37,13 @@ ITInformationPresenter >> icon [
 	^ self iconNamed: #blank
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 ITInformationPresenter >> initialExtent [
 	
 	^ (self currentWorld extent x / 2) @ 200
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 ITInformationPresenter >> initializePresenters [ 
 	iconPresenter := self newImage
 		image: self icon;
@@ -53,13 +54,13 @@ ITInformationPresenter >> initializePresenters [
 		yourself.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 ITInformationPresenter >> initializeWindow: aWindowPresenter [
 	super initializeWindow: aWindowPresenter. 
 	aWindowPresenter title: self model title
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ITInformationPresenter >> messageText [
 	^ messageText
 ]

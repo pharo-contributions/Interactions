@@ -1,26 +1,27 @@
 Class {
-	#name : #ITInformationPresenterTest,
-	#superclass : #TestCase,
+	#name : 'ITInformationPresenterTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'presenter',
 		'window',
 		'information'
 	],
-	#category : #'Interactions-Widgets-Tests'
+	#category : 'Interactions-Widgets-Tests',
+	#package : 'Interactions-Widgets-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 ITInformationPresenterTest >> setUp [
 	information := ITInformation example.
 	presenter := ITInformationPresenter on: information.
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 ITInformationPresenterTest >> tearDown [ 
 	window close
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ITInformationPresenterTest >> testDialogHasOnlyOkButton [
 	window := presenter openDialogWithSpec.
 	
@@ -32,7 +33,7 @@ ITInformationPresenterTest >> testDialogHasOnlyOkButton [
 		equals: 'Ok'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ITInformationPresenterTest >> testInformationMessageIsSet [
 	window := presenter openDialogWithSpec.
 	
@@ -41,7 +42,7 @@ ITInformationPresenterTest >> testInformationMessageIsSet [
 		equals: information message
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ITInformationPresenterTest >> testInformationTitleIsSet [
 	window := presenter openDialogWithSpec.
 	

@@ -4,8 +4,8 @@ I can be canceled, approved or denied.
 My actions labels can be customized.
 "
 Class {
-	#name : #ITConfirmation,
-	#superclass : #ITUserInteraction,
+	#name : 'ITConfirmation',
+	#superclass : 'ITUserInteraction',
 	#instVars : [
 		'cancelLabel',
 		'cancelBlock',
@@ -13,10 +13,11 @@ Class {
 		'trueLabel',
 		'defaultChoice'
 	],
-	#category : #Interactions
+	#category : 'Interactions',
+	#package : 'Interactions'
 }
 
-{ #category : #example }
+{ #category : 'example' }
 ITConfirmation class >> example [
 	^ self new
 		message: 'I''m a reification of a confirmation to be delivered to the user';
@@ -24,22 +25,22 @@ ITConfirmation class >> example [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITConfirmation >> cancelBlock: aBlock [
 	cancelBlock := aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITConfirmation >> cancelLabel [
 	^ cancelLabel ifNil: [ cancelLabel := 'cancel' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITConfirmation >> cancelLabel: aString [
 	cancelLabel := aString
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 ITConfirmation >> confirm [
 	^ UIManager default
 		confirm: message
@@ -49,17 +50,17 @@ ITConfirmation >> confirm [
 		default: self defaultChoice
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 ITConfirmation >> confirmWithCancelBlock [
 	^ UIManager default confirm: message orCancel: cancelBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITConfirmation >> defaultChoice [
 	^ defaultChoice
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITConfirmation >> defaultChoice: aSymbol [
 	#(#true #false #nil) 
 		detect: aSymbol ifNone: [ self error: aSymbol, ' is not a valid choice!' ].
@@ -67,37 +68,37 @@ ITConfirmation >> defaultChoice: aSymbol [
 	defaultChoice := aSymbol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITConfirmation >> noLabel [
 	^ falseLabel ifNil: [ falseLabel := 'no' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITConfirmation >> noLabel: aString [
 	falseLabel := aString
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 ITConfirmation >> proceed [
 	^ UIManager default proceed: message title: title
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 ITConfirmation >> question [
 	^ UIManager default question: message title: title
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 ITConfirmation >> questionWithoutCancel [
 	^ UIManager default questionWithoutCancel: message title: title
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITConfirmation >> yesLabel [
 	^ trueLabel ifNil: [ trueLabel := 'yes' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITConfirmation >> yesLabel: aString [
 	trueLabel := aString
 ]

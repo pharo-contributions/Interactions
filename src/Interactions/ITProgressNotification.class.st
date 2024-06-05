@@ -2,16 +2,17 @@
 I notify the user of the progress of the current action.
 "
 Class {
-	#name : #ITProgressNotification,
-	#superclass : #Object,
+	#name : 'ITProgressNotification',
+	#superclass : 'Object',
 	#instVars : [
 		'string',
 		'block'
 	],
-	#category : #Interactions
+	#category : 'Interactions',
+	#package : 'Interactions'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITProgressNotification >> block: aBlock [
 	"
 	aBlock could be this
@@ -22,17 +23,17 @@ ITProgressNotification >> block: aBlock [
 	block := aBlock
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 ITProgressNotification >> informUserDuring [
 	^ UIManager default informUser: string during: block
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 ITProgressNotification >> informUserDuringBlock [
 	^ UIManager default informUserDuring: block
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITProgressNotification >> string: aString [
 	string := aString
 ]

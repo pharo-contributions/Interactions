@@ -6,8 +6,8 @@ look at
 	FDFileDialogPresenter clas >> #fullExample
 "
 Class {
-	#name : #ITFileRequest,
-	#superclass : #Object,
+	#name : 'ITFileRequest',
+	#superclass : 'Object',
 	#instVars : [
 		'previewer',
 		'columns',
@@ -17,10 +17,11 @@ Class {
 		'filtersCustomization',
 		'extensionString'
 	],
-	#category : #Interactions
+	#category : 'Interactions',
+	#package : 'Interactions'
 }
 
-{ #category : #example }
+{ #category : 'example' }
 ITFileRequest class >> example [ 
 	ITFileRequest new
 		"previewer:  ;"
@@ -33,12 +34,12 @@ ITFileRequest class >> example [
 		chooseDirectory
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITFileRequest >> bookmarks: aCollectionOfBookmark [
 	bookmarks := aCollectionOfBookmark
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 ITFileRequest >> chooseDirectory [
 	"
 	model := ITFileRequest new. 
@@ -51,7 +52,7 @@ ITFileRequest >> chooseDirectory [
 	^ fileDialog confirm
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 ITFileRequest >> chooseFile [
 	| fileDialog |
 	fileDialog := FDOpenFileDialog new.
@@ -59,24 +60,24 @@ ITFileRequest >> chooseFile [
 	^ fileDialog confirm
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITFileRequest >> columns: aCollectionOfColumn [
 	columns := aCollectionOfColumn
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ITFileRequest >> commonActionFor: fileDialog [
 	self configureFileDialog: fileDialog.
 	fileDialog openModalWithSpec
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 ITFileRequest >> configurationForSaveFileDialog: fileDialog [
 	extensionString ifNotNil: [ fileDialog extension: extensionString ].
 	self commonActionFor: fileDialog
 ]
 
-{ #category : #setup }
+{ #category : 'setup' }
 ITFileRequest >> configureFileDialog: fileDialog [
 	"I do this because fileDialog have default value"
 
@@ -89,28 +90,28 @@ ITFileRequest >> configureFileDialog: fileDialog [
 		ifNotNil: [ fileDialog filtersCustomization: filtersCustomization ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITFileRequest >> defaultFolder: aFileReference [
 	defaultFolder := aFileReference
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITFileRequest >> filtersCustomization: aCollectionOfFilter [
 	filtersCustomization := aCollectionOfFilter
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITFileRequest >> okAction: aBlockUseByTheOkButton [
 	"this block take one argument , a FileReference"
 	okAction := aBlockUseByTheOkButton
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ITFileRequest >> previewer: aPreviewer [
 	previewer := aPreviewer
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 ITFileRequest >> saveFile [
 	| fileDialog |
 	fileDialog := FDSaveFileDialog new.

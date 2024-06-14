@@ -5,7 +5,7 @@ My actions labels can be customized.
 "
 Class {
 	#name : 'ITConfirmation',
-	#superclass : 'ITUserInteraction',
+	#superclass : 'ITUserInteractionWithMessage',
 	#instVars : [
 		'cancelLabel',
 		'cancelBlock',
@@ -91,6 +91,12 @@ ITConfirmation >> question [
 { #category : 'action' }
 ITConfirmation >> questionWithoutCancel [
 	^ UIManager default questionWithoutCancel: message title: title
+]
+
+{ #category : 'private' }
+ITConfirmation >> widgetFor: aBackend [
+
+	^ aBackend widgetForConfirmation: self
 ]
 
 { #category : 'accessing' }

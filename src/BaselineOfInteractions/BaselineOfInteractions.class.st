@@ -11,6 +11,8 @@ BaselineOfInteractions >> baseline: spec [
 	<baseline>
 	spec
 		package: 'Interactions';
-		package: 'Interactions-Widgets';
-		package: 'Interactions-Widgets-Tests'
+		package: 'Interactions-Widgets'
+			with: [ spec requires: #( 'Interactions' ) ];
+		package: 'Interactions-Tests'
+			with: [ spec requires: #( 'Interactions' 'Interactions-Widgets' ) ]
 ]

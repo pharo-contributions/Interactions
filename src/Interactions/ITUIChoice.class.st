@@ -4,7 +4,7 @@ Values are provided with a collection of objects.
 "
 Class {
 	#name : 'ITUIChoice',
-	#superclass : 'ITUserInteraction',
+	#superclass : 'ITUserInteractionWithMessage',
 	#instVars : [
 		'items',
 		'displayBlock'

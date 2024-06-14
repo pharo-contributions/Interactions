@@ -1,6 +1,10 @@
+"
+I represent an information to be asked to the user.
+I can be configured to be request a simple data, a password, use enttry completion.
+"
 Class {
 	#name : 'ITRequest',
-	#superclass : 'ITUserInteraction',
+	#superclass : 'ITUserInteractionWithMessage',
 	#instVars : [
 		'initialAnswer',
 		'validationBlock',

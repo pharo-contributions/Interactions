@@ -2,11 +2,10 @@
 I represent an information to be communicated to the user.
 I can be configured to be an information of different types: abort, access denied, alert.
 
-I'm used by the UIManager to show (or not, dependending on the interaction mode) a UI corrresponding to this model.
 "
 Class {
 	#name : 'ITInformation',
-	#superclass : 'ITUserInteraction',
+	#superclass : 'ITUserInteractionWithMessage',
 	#instVars : [
 		'type'
 	],
@@ -44,4 +43,10 @@ ITInformation >> beAlert [
 { #category : 'accessing' }
 ITInformation >> type [ 
 	^ type
+]
+
+{ #category : 'private' }
+ITInformation >> widgetFor: aBackend [
+
+	^ aBackend widgetForInformation: self
 ]

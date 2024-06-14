@@ -5,3 +5,11 @@ StFileSystemPresenter >> doInteraction [
 	
 	^ self open
 ]
+
+{ #category : '*Interactions-Widgets' }
+StFileSystemPresenter class >> for: aFileRequest [
+
+	^ self new
+		title: aFileRequest title;
+		yourself
+]

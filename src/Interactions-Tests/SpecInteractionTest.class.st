@@ -31,7 +31,7 @@ SpecInteractionTest >> testCanOpenAConfirmation [
 		message: 'Are you sure you want to delete this file?';
 		yesLabel: 'delete'.
 		
-	widget := backend for: confirm.
+	widget := backend widgetFor: confirm.
 	widget doInteraction. 
 	
 	window := widget window.
@@ -49,7 +49,7 @@ SpecInteractionTest >> testCanOpenAFileRequest [
 		filter: '.image';
 		currentFolder: FileLocator home.
 		
-	widget := backend for: fileRequest.
+	widget := backend widgetFor: fileRequest.
 	widget doInteraction. 
 	
 	window := widget window.
@@ -66,7 +66,7 @@ SpecInteractionTest >> testCanOpenAnInformation [
 		title: 'Some confirmation needed';
 		message: 'Do you want to proceed?'.
 		
-	widget := backend for: inform.
+	widget := backend widgetFor: inform.
 	widget doInteraction. 
 	
 	window := widget window.
@@ -88,7 +88,7 @@ SpecInteractionTest >> testCanSelectAFile [
 		currentFolder: fs root;
 		yourself.
 		
-	widget := backend for: fileRequest.
+	widget := backend widgetFor: fileRequest.
 	widget doInteraction.
 	widget selectFile: bImage.
 	file := widget confirm.
@@ -110,7 +110,7 @@ SpecInteractionTest >> testCanSelectAFolder [
 		currentFolder: fs root;
 		yourself.
 		
-	widget := backend for: fileRequest.
+	widget := backend widgetFor: fileRequest.
 	widget doInteraction.
 	widget selectFile: bFolder.
 	folder := widget confirm.

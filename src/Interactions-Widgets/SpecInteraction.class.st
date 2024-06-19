@@ -19,7 +19,7 @@ SpecInteraction class >> default [
 ]
 
 { #category : 'querying' }
-SpecInteraction >> for: aUserInteraction [
+SpecInteraction >> widgetFor: aUserInteraction [
 
 	^ aUserInteraction widgetFor: self
 ]

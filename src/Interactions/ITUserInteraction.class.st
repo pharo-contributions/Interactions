@@ -11,6 +11,12 @@ Class {
 	#package : 'Interactions'
 }
 
+{ #category : 'private' }
+ITUserInteraction >> backend [
+
+	^ SpecInteraction default
+]
+
 { #category : 'accessing' }
 ITUserInteraction >> title [
 	^ title

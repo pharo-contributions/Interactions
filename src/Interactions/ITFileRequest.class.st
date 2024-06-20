@@ -20,6 +20,13 @@ ITFileRequest >> beForFolderOpening [
 	isForFileOpening := false
 ]
 
+{ #category : 'running' }
+ITFileRequest >> chooseFile [
+
+	^ (self backend widgetFor: self)
+			doInteraction
+]
+
 { #category : 'accessing' }
 ITFileRequest >> currentFolder [
 

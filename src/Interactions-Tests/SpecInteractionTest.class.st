@@ -50,7 +50,7 @@ SpecInteractionTest >> testCanOpenAFileRequest [
 		currentFolder: FileLocator home.
 		
 	widget := backend widgetFor: fileRequest.
-	widget doInteraction. 
+	widget open.
 	
 	window := widget window.
 	self assert: window title equals: fileRequest title.

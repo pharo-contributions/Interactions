@@ -3,7 +3,7 @@ Extension { #name : 'StFileSystemPresenter' }
 { #category : '*Interactions-Widgets' }
 StFileSystemPresenter >> doInteraction [
 	
-	^ self open
+	^ self openModal
 ]
 
 { #category : '*Interactions-Widgets' }

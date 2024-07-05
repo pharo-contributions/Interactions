@@ -14,10 +14,16 @@ Class {
 	#package : 'Interactions'
 }
 
-{ #category : 'configuring' }
+{ #category : 'private' }
 ITFileRequest >> beForFolderOpening [
 
 	isForFileOpening := false
+]
+
+{ #category : 'running' }
+ITFileRequest >> chooseDirectory [
+	self beForFolderOpening.
+	^ self chooseFile
 ]
 
 { #category : 'running' }

@@ -9,7 +9,7 @@ StFileSystemPresenter >> doInteraction [
 { #category : '*Interactions-Widgets' }
 StFileSystemPresenter class >> for: aFileRequest [
 
-	^ self new
+	^ (self new"Application: aFileRequest application owner: aFileRequest parentWindow model: StFileSystemModel new")
 		title: aFileRequest title;
 		yourself
 ]

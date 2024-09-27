@@ -32,19 +32,19 @@ SpecInteraction >> widgetForConfirmation: aConfirmation [
 
 { #category : 'accessing' }
 SpecInteraction >> widgetForFileRequest: aFileRequest [
+	| fileDialog |
 
-	| widget widgetClass |
-	widgetClass := aFileRequest isForFileOpening
-		               ifTrue: [ StOpenFilePresenter ]
-		               ifFalse: [ StOpenDirectoryPresenter ].
-	widget := widgetClass for: aFileRequest.
+	fileDialog := aFileRequest application newOpenFile.
+
+	aFileRequest isForFileOpening
+		ifTrue: [ fileDialog beOpenFile ]
+		ifFalse: [ fileDialog beOpenDirectory ].
 	
-	aFileRequest currentFolder ifNotNil: [ :folder | widget openFolder: folder ].
-	aFileRequest filter ifNotNil: [ :filter |
-		widget fileNavigationSystem filter:
-			(StCustomExtensionsFilter extensions: { filter }) ].
+	aFileRequest currentFolder ifNotNil: [ :folder | fileDialog path: folder ].
+	aFileRequest filter 
+		ifNotNil: [ :filter | fileDialog addFilter: filter ].
 
-	^ widget
+	^ fileDialog
 ]
 
 { #category : 'accessing' }

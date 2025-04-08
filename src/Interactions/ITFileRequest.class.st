@@ -22,6 +22,7 @@ ITFileRequest >> beForFolderOpening [
 
 { #category : 'running' }
 ITFileRequest >> chooseDirectory [
+
 	self beForFolderOpening.
 	^ self chooseFile
 ]
@@ -29,8 +30,7 @@ ITFileRequest >> chooseDirectory [
 { #category : 'running' }
 ITFileRequest >> chooseFile [
 
-	^ (self backend widgetFor: self)
-			doInteraction
+	^ (self backend widgetFor: self) doInteraction
 ]
 
 { #category : 'accessing' }
